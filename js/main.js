@@ -1,23 +1,24 @@
 var app = angular.module('myApp', []);
 
-app.run(function($rootScope) {
-  $rootScope.name = 'MACH1010';
-});
-
-app.controller('MyController', function($scope) {
-  $scope.person = {
-    name: 'mach1010'
+app.controller('PlayerController', ['$scope', function($scope) {
+  $scope.playing = false;
+  $scope.audio = document.createElement('audio');
+  $scope.audio.src = './media/RR.mp3';
+  $scope.play = function() {
+    $scope.audio.play();
+    $scope.playing = true;
   };
-});
-
-app.controller('ParentController', function($scope) {
-  $scope.person = {
-    greeted: false
+  $scope.stop = function() {
+    $scope.audio.pause();
+    $scope.playing = false;
   };
-});
+  $scope.audio.addEventListener('ended', function() {
+    $scope.$apply(function() {
+      $scope.stop()
+    });
+  });
+}]);
 
-app.controller('ChildController', function($scope) {
-  $scope.sayHello = function() {
-    $scope.person.greeted = true;
-  };
-});
+app.controller('RelatedController', ['$scope', function($scope) {
+  
+}]);
