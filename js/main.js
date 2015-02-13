@@ -3,7 +3,7 @@ var app = angular.module('myApp', []);
 app.controller('PlayerController', ['$scope', function($scope) {
   $scope.playing = false;
   $scope.audio = document.createElement('audio');
-  $scope.audio.src = './media/RR.mp3';
+  $scope.audio.src = './media/r2d2.mp3';
   $scope.play = function() {
     $scope.audio.play();
     $scope.playing = true;
