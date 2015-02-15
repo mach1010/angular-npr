@@ -42,3 +42,17 @@ app.controller('DemoController', function($scope) {
   $scope.add = function(amount) { $scope.counter += amount; };
   $scope.subtract = function(amount) { $scope.counter -= amount; };
 });
+
+app.controller('DemoHTTP', function($scope, $http) {
+  $http({
+    method: 'JSONP',
+    url: 'https://api.github.com/events?callback=JSON_CALLBACK'
+  }).success(function(data, status, headers, config) {
+    // data contains the response
+    // status is the HTTP status
+    // headers is the header getter function
+    // config is the object that was used to create the HTTP request
+    $scope.data = data
+  }).error(function(data, status, headers, config) {
+  });
+})
