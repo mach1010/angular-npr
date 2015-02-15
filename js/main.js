@@ -1,6 +1,9 @@
 var app = angular.module('myApp', []);
+var apiKey = 'MDExODQ2OTg4MDEzNzQ5OTM4Nzg5MzFiZA001',
+    nprUrl = 'http://api.npr.org/query?id=61&fields=relatedLink,title,byline,text,audio,image,pullQuote,all&output=JSON';
 
-app.controller('PlayerController', ['$scope', function($scope) {
+
+app.controller('PlayerController', ['$scope','$http', function($scope, $http) {
   $scope.playing = false;
   $scope.audio = document.createElement('audio');
   $scope.audio.src = './media/r2d2.mp3';
@@ -14,31 +17,18 @@ app.controller('PlayerController', ['$scope', function($scope) {
   };
   $scope.audio.addEventListener('ended', function() {
     $scope.$apply(function() {
-      $scope.stop()
+      $scope.stop();
     });
+  });
+  $http({
+    method: 'JSONP',
+    url: nprUrl + '&apiKey=' + apiKey + '&callback=JSON_CALLBACK'
+  }).success(function(data, status) {
+    $scope.programs = data.list.story;
+  }).error(function(data, status) {
   });
 }]); 
 
 app.controller('RelatedController', ['$scope', function($scope) {
   
 }]);
-
-
-
-// example code:
-app.controller('MyController', function($scope) {
-  $scope.person = { name: 'mach1010'};
-  var updateClock = function() {
-    $scope.clock = new Date();
-  };
-  var timer = setInterval(function() {
-    $scope.$apply(updateClock);
-  }, 1000);
-  updateClock();
-});
-
-app.controller('DemoController', function($scope) {
-  $scope.counter = 0;
-  $scope.add = function(amount) { $scope.counter += amount; };
-  $scope.subtract = function(amount) { $scope.counter -= amount; };
-});

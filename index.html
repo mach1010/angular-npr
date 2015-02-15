@@ -12,15 +12,8 @@
       <button ng-click="stop()" class="button alert" ng-show="playing">Stop</button>
       Playing audio: <b>{{ playing }}</b>
     </div>
-    <div ng-controller="MyController">
-      <h5>{{ clock }}</h5>
-      <h5>{{ person.name }}
-    </div>
-    <div ng-controller="DemoController">
-      <h4> simple adding machine </h4>
-      <button ng-click='add(1)' class='button'>Add 1</button>
-      <button ng-click='subtract(1)' class='button'>Less 1</button>
-      <h2>{{ counter }}
+    <div ng-controller="PlayerController">
+      {{ programs }}
     </div>
   </body>
 </html>
