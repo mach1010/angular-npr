@@ -17,7 +17,7 @@ app.controller('PlayerController', ['$scope', function($scope) {
       $scope.stop()
     });
   });
-}]);
+}]); 
 
 app.controller('RelatedController', ['$scope', function($scope) {
   
