@@ -22,3 +22,23 @@ app.controller('PlayerController', ['$scope', function($scope) {
 app.controller('RelatedController', ['$scope', function($scope) {
   
 }]);
+
+
+
+// example code:
+app.controller('MyController', function($scope) {
+  $scope.person = { name: 'mach1010'};
+  var updateClock = function() {
+    $scope.clock = new Date();
+  };
+  var timer = setInterval(function() {
+    $scope.$apply(updateClock);
+  }, 1000);
+  updateClock();
+});
+
+app.controller('DemoController', function($scope) {
+  $scope.counter = 0;
+  $scope.add = function(amount) { $scope.counter += amount; };
+  $scope.subtract = function(amount) { $scope.counter -= amount; };
+});
