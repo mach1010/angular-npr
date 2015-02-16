@@ -56,3 +56,12 @@ app.controller('DemoHTTP', function($scope, $http) {
   }).error(function(data, status, headers, config) {
   });
 })
+
+app.controller('DemoRepeat', function($scope) {
+  $scope.favs = {
+    'Chewie': 'Kaashik',
+    'Luke': 'Tatooine',
+    'Leia': 'Alderaan',
+    'Yoda': 'Dagobah System'
+  };
+});

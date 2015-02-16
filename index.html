@@ -26,5 +26,10 @@
       AJAX $http request from github:
       <pre style="overflow:hidden; width:500px; border:1px solid #aaa"> {{ data }} </pre>
     </div>
+    <div ng-controller="DemoRepeat">
+      <li>
+        <ul ng-repeat="(name, place) in favs">{{ name }} lives in {{ place }}</ul>
+      </li>
+    </div>
   </body>
 </html>
