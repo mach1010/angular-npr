@@ -4,11 +4,14 @@ var apiKey = 'MDExODQ2OTg4MDEzNzQ5OTM4Nzg5MzFiZA001',
 
 
 app.controller('PlayerController', ['$scope','$http', function($scope, $http) {
-  $scope.playing = false;
-  $scope.audio = document.createElement('audio');
-  $scope.audio.src = './media/r2d2.mp3';
-  $scope.play = function() {
-    $scope.audio.play();
+  var audio = document.createElement('audio');
+  $scope.audio = audio
+
+  $scope.play = function(program) {
+    if ($scope.playing) $scope.audio.pause();
+    var url = program.audio[0].format.mp4.$text;
+    audio.src = url;
+    audio.play();
     $scope.playing = true;
   };
   $scope.stop = function() {
