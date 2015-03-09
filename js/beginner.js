@@ -136,3 +136,11 @@ $scope.related.push({link: link.link[0].$text, caption: link.caption.$text});
 // Parent scope
 app.controller('FrameController', function($scope) {
 });
+
+app.config(['$routeProvider', function($routeProvider) {
+  $routeProvider.when('/', {
+    controller: 'HomeController',
+    template: '<h2>We are home</h2>'
+  })
+  .otherwise({redirectTo: '/'});
+}]);
